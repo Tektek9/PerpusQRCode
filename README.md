@@ -34,7 +34,7 @@ cd PerpusQRCode
 
 Install requirement
 ```
-python install -r requirement
+python install -r requirement.txt
 ```
 
 Jalankan automation
