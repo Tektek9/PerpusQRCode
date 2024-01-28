@@ -9,6 +9,6 @@ Menggunakan framework Laravel
 
 Database Mysql
 untuk run
-'''
+```
 git clone 
-'''
+```
