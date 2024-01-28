@@ -1,8 +1,9 @@
-CRUD Laravel
-- Create
-- Read
-- Update
-- Delete
+Fitur:
+- CRUD
+- Auto generate QRCode
+- Pencarian
+- Pagination
+
 
 Menggunakan framework Laravel
 
