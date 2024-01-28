@@ -2,20 +2,23 @@
 
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\bukuController;
+use SimpleSoftwareIO\QrCode\Facades\QrCode;
+use App\Models\bukuModel;
 
-/*
-|--------------------------------------------------------------------------
-| Web Routes
-|--------------------------------------------------------------------------
-|
-| Here is where you can register web routes for your application. These
-| routes are loaded by the RouteServiceProvider and all of them will
-| be assigned to the "web" middleware group. Make something great!
-|
-*/
+Route::get('/', [bukuController::class, 'index']);
 
-Route::get('/', function () {
-    return view('welcome');
-});
+// Route::get('/', function () {
+//     return view('welcome');
+// });
 
 Route::resource("/buku", bukuController::class);
+Route::get('/buku/{id}/qr', function ($id) {
+    $buku = bukuModel::find($id);
+    $qrcode = QrCode::size(300)->generate($buku);
+    $text_1 = 'Id User: ' . $id;
+    return view('buku.qr', [
+        'qrcode' => $qrcode,
+        'text_1' => $text_1
+    ]);
+})->name('qr');
+Route::get('/buku', [bukuController::class,'cari']);

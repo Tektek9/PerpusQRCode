@@ -4,6 +4,8 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\bukuModel;
+use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Log;
 
 class bukuController extends Controller
 {
@@ -12,14 +14,14 @@ class bukuController extends Controller
      */
     public function index()
     {
-        $buku  = bukuModel::all();
+        $buku  = bukuModel::simplePaginate(10);
         return view ('buku.index')-> with('buku', $buku);
     }
 
     /**
      * Show the form for creating a new resource.
      */
-    public function create()     
+    public function create()
     {
         return view ('buku.create');
     }
@@ -29,9 +31,14 @@ class bukuController extends Controller
      */
     public function store(Request $request)
     {
-        $input = $request->all();
-        bukuModel::create($input);
-        return redirect('buku')->with('flash_message', 'Buku berhasil ditambahkan');
+        if ($request->has('submit')) {
+            $input = $request->all();
+            bukuModel::create($input);
+            return redirect('buku')->with('flash_message', 'Buku berhasil ditambahkan');
+        }else{
+            $buku  = bukuModel::simplePaginate(10);
+            return view('buku.index')->with('buku', $buku);
+        }
     }
 
     /**
@@ -57,10 +64,15 @@ class bukuController extends Controller
      */
     public function update(Request $request, string $id)
     {
-        $buku = bukuModel::find($id);
-        $input = $request->all();
-        $buku->update($input);
-        return redirect('buku')->with('flash_message', 'Buku berhasil diupdate');
+        if ($request->has('submit')){
+            $buku = bukuModel::find($id);
+            $input = $request->all();
+            $buku->update($input);
+            return redirect('buku')->with('flash_message', 'Buku berhasil diupdate');
+        }else{
+            $buku  = bukuModel::simplePaginate(10);
+            return view('buku.index')->with('buku', $buku);
+        }
     }
 
     /**
@@ -70,5 +82,16 @@ class bukuController extends Controller
     {
         $buku = bukuModel::destroy($id);
         return redirect('buku')->with('flash_message', 'Buku berhasil dihapus');
+    }
+
+    public function cari(Request $request)
+    {
+        $cari = $request->input('search');
+        if ($cari===null) {
+            $buku  = bukuModel::simplePaginate(10);
+        }else{
+            $buku = bukuModel::where('judul', 'like', '%' . $cari . '%')->simplePaginate(10);
+        }
+        return view('buku.index')->with('buku', $buku)->with('request', $request);
     }
 }
