@@ -19,9 +19,6 @@ Menggunakan framework Laravel
 Database Mysql
 
 
-
-
-
 Lakukan clone repo
 ```
 git clone https://github.com/Tektek9/PerpusQRCode.git
@@ -41,3 +38,4 @@ Jalankan automation
 ```
 python setup.py
 ```
+![](https://github.com/Tektek9/PerpusQRCode/blob/main/demo.gif)
