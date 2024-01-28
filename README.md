@@ -5,13 +5,13 @@ Fitur:
 - Pagination
 
 Bonus script automation:
-- composer install
-- generate env
-- manipulasi env
-- auto create db mysql
-- generate key
-- migrasi db
-- menjalankan web di localhost
+- Composer install
+- Generate env
+- Manipulasi env
+- Auto create db mysql
+- Generate key
+- Migrasi db
+- Run web di localhost
 
 
 Menggunakan framework Laravel
