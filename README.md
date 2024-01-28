@@ -4,6 +4,15 @@ Fitur:
 - Pencarian
 - Pagination
 
+bonus script automation:
+- composer install
+- generate env
+- manipulasi env
+- auto create db mysql
+- generate key
+- migrasi db
+- menjalankan web di localhost
+
 
 Menggunakan framework Laravel
 
