@@ -8,7 +8,24 @@ Fitur:
 Menggunakan framework Laravel
 
 Database Mysql
-untuk run
+
+
+Lakukan clone repo
 ```
-git clone 
+git clone https://github.com/Tektek9/PerpusQRCode.git
+```
+
+Masuk folder repo yang sudah di clone
+```
+cd PerpusQRCode
+```
+
+Install requirement
+```
+python install -r requirement
+```
+
+Jalankan automation
+```
+python setup.py
 ```
