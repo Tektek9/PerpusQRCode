@@ -4,7 +4,7 @@ Fitur:
 - Pencarian
 - Pagination
 
-bonus script automation:
+Bonus script automation:
 - composer install
 - generate env
 - manipulasi env
